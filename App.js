@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './src/components/Header';
-import ChallengeList from './src/components/ChallengeList'
+import UserList from './src/components/UserList'
 
 class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header headerText="Challenges" />
-        <ChallengeList />
+        <Header headerText="Users" />
+        <UserList />
         {/* <Text>Nick's App!</Text> */}
       </View>
     );

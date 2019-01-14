@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { ScrollView } from 'react-native'
+import UserDetail from './UserDetail'
 
-class ChallengeList extends Component {
+
+class UserList extends Component {
 
   state = {
     data: []
   }
 
   async componentWillMount() {
-    let rawJson = await fetch('http://localhost:5000/goals', {
+    let rawJson = await fetch('http://localhost:5000/users', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });
@@ -18,7 +20,7 @@ class ChallengeList extends Component {
 
   renderData() {
     return this.state.data.map(user => {
-      return <Text key={user.id}>{user.goal}</Text>
+      return <UserDetail key={user.id} user={user} />
     })
   }
 
@@ -26,14 +28,14 @@ class ChallengeList extends Component {
     console.log(this.state, "this.state")
     return (
 
-      < View >
+      < ScrollView >
 
-        <Text>ChallengeList</Text>
-        {this.state.data ? this.renderData() : null}
 
-      </View >
+        {this.renderData()}
+
+      </ScrollView >
     )
   }
 }
 
-export default ChallengeList
+export default UserList
